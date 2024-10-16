@@ -66,6 +66,8 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.rchTxtBx_editor = new System.Windows.Forms.RichTextBox();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,6 +76,7 @@
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
@@ -363,7 +366,6 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.button_open_file,
             this.btn_toggle_expand});
@@ -390,7 +392,7 @@
             this.btn_toggle_expand.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_toggle_expand.Name = "btn_toggle_expand";
             this.btn_toggle_expand.Size = new System.Drawing.Size(23, 22);
-            this.btn_toggle_expand.Text = "toolStripButton1";
+            this.btn_toggle_expand.Click += new System.EventHandler(this.btn_toggle_expand_Click);
             // 
             // panel1
             // 
@@ -407,6 +409,11 @@
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.rchTxtBx_editor);
+            this.splitContainer2.Panel1.Controls.Add(this.toolStrip3);
             // 
             // splitContainer2.Panel2
             // 
@@ -434,6 +441,25 @@
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(872, 25);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // rchTxtBx_editor
+            // 
+            this.rchTxtBx_editor.BackColor = System.Drawing.SystemColors.Info;
+            this.rchTxtBx_editor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rchTxtBx_editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rchTxtBx_editor.Location = new System.Drawing.Point(0, 25);
+            this.rchTxtBx_editor.Name = "rchTxtBx_editor";
+            this.rchTxtBx_editor.Size = new System.Drawing.Size(872, 415);
+            this.rchTxtBx_editor.TabIndex = 1;
+            this.rchTxtBx_editor.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +482,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -508,6 +536,8 @@
         private System.Windows.Forms.ToolStripButton button_open_file;
         private System.Windows.Forms.ToolStripButton btn_toggle_expand;
         private System.Windows.Forms.ImageList imgLst_json;
+        private System.Windows.Forms.RichTextBox rchTxtBx_editor;
+        private System.Windows.Forms.ToolStrip toolStrip3;
     }
 }
 

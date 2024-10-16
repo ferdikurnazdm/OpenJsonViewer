@@ -16,7 +16,11 @@ namespace OpenJsonViewer.Presentation {
     public partial class MainForm : Form {
         #region PRIVATE_FIELDS
         private readonly JsonService _jsonService;
+        private JsonElement _jsonElement;
         private string _fileFullPath;
+        private string _fileSaltName;
+        private string _fileBaseName;
+        private bool _isCollapsed = true;
         #endregion
 
         #region CONSTRUCTOR
@@ -55,7 +59,7 @@ namespace OpenJsonViewer.Presentation {
             }
             int jsonFilesCount = jsonFiles.Count;
             for (int i = 0; i < jsonFilesCount; i++){
-                LoadJsonToTreeView(jsonFiles[i]);
+                PrepareJsonData(jsonFiles[i]);
             }
         }
         /// <summary>
@@ -84,17 +88,18 @@ namespace OpenJsonViewer.Presentation {
         /// error state
         /// </summary>
         /// <param name="filePath">json file path</param>
-        private void LoadJsonToTreeView(string filePath) {
-            Exception exception;
-            JsonElement jsonElement;
-            if (!_jsonService.TryReadJsonFile(filePath, out jsonElement, out exception)) {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string fileName = Path.GetFileName(filePath);
-            TreeNode titleNode = new TreeNode(fileName);
+        private void LoadJsonToTreeView(JsonElement jsonElement) {
+            TreeNode titleNode = new TreeNode(_fileSaltName);
             treeView.Nodes.Add(titleNode);
             AddNode(jsonElement, titleNode);
+        }
+        /// <summary>
+        /// this method loads json element to
+        /// rich text box
+        /// </summary>
+        /// <param name="jsonElement">readed json element</param>
+        private void LoadJsonToEditor(JsonElement jsonElement) {
+            rchTxtBx_editor.AppendText(jsonElement.ToString()); ;
         }
         /// <summary>
         /// this method adds the parsed json 
@@ -157,10 +162,44 @@ namespace OpenJsonViewer.Presentation {
                 openFileDialog.Filter = "JSON Files (*.json)|*.json";
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     _fileFullPath = openFileDialog.FileName;
-                    LoadJsonToTreeView(_fileFullPath);
+                    //LoadJsonToTreeView(_fileFullPath);
+                    PrepareJsonData(_fileFullPath);
                 }
             }
         }
+        /// <summary>
+        /// this method firstly read json file
+        /// and after convert the json element
+        /// secondly set the global fields
+        /// </summary>
+        /// <param name="fileFullPath">will readed json file path</param>
+        private void PrepareJsonData(string fileFullPath) {
+            Exception exception;
+            if (!_jsonService.TryReadJsonFile(fileFullPath, out _jsonElement, out exception)) {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            _fileSaltName = Path.GetFileName(fileFullPath);
+            _fileBaseName = Path.GetDirectoryName(fileFullPath);
+            LoadJsonToTreeView(_jsonElement);
+            LoadJsonToEditor(_jsonElement);
+        }
+        /// <summary>
+        /// this method collapse or expand
+        /// all node on tree view
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameters</param>
+        private void btn_toggle_expand_Click(object sender, EventArgs e) {
+            if (_isCollapsed) {
+                treeView.ExpandAll();
+                _isCollapsed = false;
+                return;
+            }
+            treeView.CollapseAll();
+            _isCollapsed = true;
+        }
+
         #endregion
 
 
