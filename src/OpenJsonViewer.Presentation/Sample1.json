@@ -1,0 +1,31 @@
+{
+    "name": "Ferdi Kurnaz",
+    "age": 29,
+    "isDeveloper": true,
+    "skills": [
+        "C#",
+        "Python",
+        "JavaScript",
+        "SQL"
+    ],
+    "address": {
+        "street": "123 Main St",
+        "city": "Istanbul",
+        "country": "Turkey",
+        "postalCode": "34000"
+    },
+    "projects": [
+        {
+            "title": "Maintenance Tracking System",
+            "description": "A system for tracking and managing maintenance operations.",
+            "technology": ["C#", ".NET Framework", "SQL Server"],
+            "status": "Completed"
+        },
+        {
+            "title": "IoT Agent System",
+            "description": "An IoT solution for managing and monitoring devices remotely.",
+            "technology": ["Python", "Raspberry Pi", "MQTT"],
+            "status": "Ongoing"
+        }
+    ]
+}

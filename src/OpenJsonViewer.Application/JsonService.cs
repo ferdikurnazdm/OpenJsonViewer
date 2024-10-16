@@ -8,7 +8,15 @@ using System.IO;
 
 namespace OpenJsonViewer.Application {
     public sealed class JsonService {
-
+        #region PUBLIC_METHODS
+        /// <summary>
+        /// this methods read the json file
+        /// from path and return it as json element
+        /// </summary>
+        /// <param name="path">json file path</param>
+        /// <param name="root">readed converted data from json file</param>
+        /// <param name="exception">return occured exception or null</param>
+        /// <returns>return true if method success otherwise false</returns>
         public bool TryReadJsonFile(string path, out JsonElement root, out Exception exception) {
             bool result = false;
             exception = null;
@@ -30,7 +38,7 @@ namespace OpenJsonViewer.Application {
                 result = false;
             }
             return result;
-        }
-
+        } 
+        #endregion
     }
 }

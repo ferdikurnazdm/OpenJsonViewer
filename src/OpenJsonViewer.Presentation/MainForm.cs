@@ -14,31 +14,76 @@ using OpenJsonViewer.Presentation.Properties;
 
 namespace OpenJsonViewer.Presentation {
     public partial class MainForm : Form {
+        #region PRIVATE_FIELDS
         private readonly JsonService _jsonService;
         private string _fileFullPath;
+        #endregion
+
+        #region CONSTRUCTOR
         public MainForm() {
             InitializeComponent();
             _jsonService = new JsonService();
         }
+        #endregion
 
-        private void treeView_DragDrop(object sender, DragEventArgs e) {
-            //Array fileNames;
-            //bool isBadData = e.Data == null;
-            //if (isBadData) { return; }
-            //fileNames = (Array)e.Data.GetData(DataFormats.FileDrop);
-        }
-
-        private void treeView_DragEnter(object sender, DragEventArgs e) {
-            
-        }
-
+        #region PRIVATE_METHODS
+        /// <summary>
+        /// this method runs when form loading
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameter</param>
         private void MainForm_Load(object sender, EventArgs e) {
             imgLst_json.Images.Add("object", Resources.brackets);
             imgLst_json.Images.Add("array", Resources.bracket);
             imgLst_json.Images.Add("property", Resources.square);
         }
-
-
+        /// <summary>
+        /// this method load the json files
+        /// to tree view from drag and drop
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameters</param>
+        private void treeView_DragDrop(object sender, DragEventArgs e) {
+            bool isBadDrag = e.Data == null ||
+                !e.Data.GetDataPresent(DataFormats.FileDrop);
+            if (isBadDrag) { return;}
+            string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
+            List<string> jsonFiles = fileNames.Where(f => f.EndsWith(".json")).ToList();
+            if (!jsonFiles.Any()) {
+                MessageBox.Show("Please drop only JSON files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int jsonFilesCount = jsonFiles.Count;
+            for (int i = 0; i < jsonFilesCount; i++){
+                LoadJsonToTreeView(jsonFiles[i]);
+            }
+        }
+        /// <summary>
+        /// this method runs when drag enter
+        /// the tree view component
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameters</param>
+        private void treeView_DragEnter(object sender, DragEventArgs e) {
+            e.Effect = DragDropEffects.All;
+            //treeView.BackColor = Color.LightGray;
+        }
+        /// <summary>
+        /// this method runs when
+        /// cursor leved from tree view
+        /// for drag and drop feature
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameter</param>
+        private void treeView_DragLeave(object sender, EventArgs e) {
+            //treeView.BackColor = Color.White;
+        }
+        /// <summary>
+        /// this method load the readed json object
+        /// to tree view show message box occured any
+        /// error state
+        /// </summary>
+        /// <param name="filePath">json file path</param>
         private void LoadJsonToTreeView(string filePath) {
             Exception exception;
             JsonElement jsonElement;
@@ -51,8 +96,14 @@ namespace OpenJsonViewer.Presentation {
             treeView.Nodes.Add(titleNode);
             AddNode(jsonElement, titleNode);
         }
-
-
+        /// <summary>
+        /// this method adds the parsed json 
+        /// elements from readed json file
+        /// the tree view as recursinly and
+        /// also adds the element images
+        /// </summary>
+        /// <param name="element">parsed json element</param>
+        /// <param name="parentNode">will added treeview</param>
         private void AddNode(JsonElement element, TreeNode parentNode) {
             switch (element.ValueKind) {
                 case JsonValueKind.Object:
@@ -65,7 +116,6 @@ namespace OpenJsonViewer.Presentation {
                         AddNode(property.Value, objectNode);
                     }
                     break;
-
                 case JsonValueKind.Array:
                     TreeNode arrayNode = new TreeNode("Array") {
                         ImageKey = "array",
@@ -76,7 +126,6 @@ namespace OpenJsonViewer.Presentation {
                         AddNode(arrayElement, arrayNode);
                     }
                     break;
-
                 case JsonValueKind.String:
                 case JsonValueKind.Number:
                 case JsonValueKind.True:
@@ -88,7 +137,6 @@ namespace OpenJsonViewer.Presentation {
                     };
                     parentNode.Nodes.Add(valueNode);
                     break;
-
                 default:
                     TreeNode unknownNode = new TreeNode("Unknown") {
                         ImageKey = "property",
@@ -98,65 +146,27 @@ namespace OpenJsonViewer.Presentation {
                     break;
             }
         }
-
+        /// <summary>
+        /// this method runs when open file button
+        /// clicked then show the dialog.
+        /// </summary>
+        /// <param name="sender">event trigger object</param>
+        /// <param name="e">event parameters</param>
         private void button_open_file_Click(object sender, EventArgs e) {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.Filter = "*.json|";
+                openFileDialog.Filter = "JSON Files (*.json)|*.json";
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     _fileFullPath = openFileDialog.FileName;
                     LoadJsonToTreeView(_fileFullPath);
                 }
             }
         }
+        #endregion
+
+
     }
 
 }
 
 
-
-
-
-//public class JsonTreeViewLoader {
-//    public static void LoadJsonToTreeView(string filePath, TreeView treeView) {
-//        // JSON dosyasını oku
-//        string jsonString = File.ReadAllText(filePath);
-
-//        // JSON'u JsonDocument'e parse et
-//        using (JsonDocument doc = JsonDocument.Parse(jsonString)) {
-//            // Kök elementi al ve TreeView'a ekle
-//            JsonElement root = doc.RootElement;
-//            TreeNode rootNode = new TreeNode("JSON Root");
-//            treeView.Nodes.Add(rootNode);
-
-//            // JSON'u TreeView'a ekleyen fonksiyon
-//            AddNode(root, rootNode);
-//        }
-//    }
-
-//    private static void AddNode(JsonElement element, TreeNode parentNode) {
-//        switch (element.ValueKind) {
-//            case JsonValueKind.Object:
-//                foreach (JsonProperty property in element.EnumerateObject()) {
-//                    TreeNode childNode = new TreeNode(property.Name);
-//                    parentNode.Nodes.Add(childNode);
-//                    AddNode(property.Value, childNode);  // Rekursif olarak alt düğümleri ekler
-//                }
-//                break;
-
-//            case JsonValueKind.Array:
-//                int index = 0;
-//                foreach (JsonElement arrayItem in element.EnumerateArray()) {
-//                    TreeNode arrayNode = new TreeNode($"Array Item {index}");
-//                    parentNode.Nodes.Add(arrayNode);
-//                    AddNode(arrayItem, arrayNode);
-//                    index++;
-//                }
-//                break;
-
-//            default:
-//                parentNode.Nodes.Add(new TreeNode(element.ToString()));
-//                break;
-//        }
-//    }
-//}
 

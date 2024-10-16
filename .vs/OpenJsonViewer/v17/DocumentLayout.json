@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0741ED74-6CAD-4BDF-9BCC-8FD083C8CB18}|src\\OpenJsonViewer.Presentation\\OpenJsonViewer.Presentation.csproj|d:\\users\\ferdi.kurnaz\\source\\repos\\openjsonviewer\\src\\openjsonviewer.presentation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0741ED74-6CAD-4BDF-9BCC-8FD083C8CB18}|src\\OpenJsonViewer.Presentation\\OpenJsonViewer.Presentation.csproj|solutionrelative:src\\openjsonviewer.presentation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0741ED74-6CAD-4BDF-9BCC-8FD083C8CB18}|src\\OpenJsonViewer.Presentation\\OpenJsonViewer.Presentation.csproj|d:\\users\\ferdi.kurnaz\\source\\repos\\openjsonviewer\\src\\openjsonviewer.presentation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0741ED74-6CAD-4BDF-9BCC-8FD083C8CB18}|src\\OpenJsonViewer.Presentation\\OpenJsonViewer.Presentation.csproj|solutionrelative:src\\openjsonviewer.presentation\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2B8C0E4-6531-4D2B-A57D-1428FA96F473}|src\\OpenJsonViewer.Application\\OpenJsonViewer.Application.csproj|d:\\users\\ferdi.kurnaz\\source\\repos\\openjsonviewer\\src\\openjsonviewer.application\\jsonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2B8C0E4-6531-4D2B-A57D-1428FA96F473}|src\\OpenJsonViewer.Application\\OpenJsonViewer.Application.csproj|solutionrelative:src\\openjsonviewer.application\\jsonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 270,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +35,44 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "RelativeDocumentMoniker": "src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "ToolTip": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "RelativeToolTip": "src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAswE4AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T12:29:32.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "RelativeDocumentMoniker": "src\\OpenJsonViewer.Presentation\\MainForm.cs",
+              "ToolTip": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Presentation\\MainForm.cs [Design]",
+              "RelativeToolTip": "src\\OpenJsonViewer.Presentation\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T12:29:29.278Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JsonService.cs",
+              "DocumentMoniker": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Application\\JsonService.cs",
+              "RelativeDocumentMoniker": "src\\OpenJsonViewer.Application\\JsonService.cs",
+              "ToolTip": "D:\\Users\\ferdi.kurnaz\\source\\repos\\OpenJsonViewer\\src\\OpenJsonViewer.Application\\JsonService.cs",
+              "RelativeToolTip": "src\\OpenJsonViewer.Application\\JsonService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T12:26:40.188Z",
+              "EditorCaption": ""
             }
           ]
         }
