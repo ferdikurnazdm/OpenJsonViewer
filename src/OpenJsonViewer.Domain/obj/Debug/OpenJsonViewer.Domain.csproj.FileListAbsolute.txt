@@ -1,0 +1,6 @@
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\bin\Debug\OpenJsonViewer.Domain.dll
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\bin\Debug\OpenJsonViewer.Domain.pdb
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\obj\Debug\OpenJsonViewer.Domain.csproj.AssemblyReference.cache
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\obj\Debug\OpenJsonViewer.Domain.csproj.CoreCompileInputs.cache
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\obj\Debug\OpenJsonViewer.Domain.dll
+D:\Users\ferdi.kurnaz\source\repos\OpenJsonViewer\src\OpenJsonViewer.Domain\obj\Debug\OpenJsonViewer.Domain.pdb
